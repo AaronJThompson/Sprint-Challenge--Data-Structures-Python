@@ -1,28 +1,26 @@
 import sys
-sys.path.append('../reverse')
-from reverse import Node
+from doubly_linked_list import DoublyLinkedList
 
-class DoublyLinkedList:
-    def __init__(self, node=None):
-        self.head = node
-        self.tail = node
-        self.length = 1 if node is not None else 0
-    
-    def __len__(self):
-        return self.length
 
-    def add_to_head(self, value):
-        node = Node(value)
-        node.set_next(self.head)
-        if self.tail is None:
-            self.tail = node
-        self.length += 1
+class Queue:
+    def __init__(self):
+        self.size = 0
+        # Why is our DLL a good choice to store our elements?
+        self.storage = DoublyLinkedList()
 
-    def add_to_tail(self, value):
-        node = Node(value)
-        if self.tail is not None:
-            self.tail.set_next(node)
-        else:
-            self.head = node
-        self.tail = node
-        self.length += 1
+    def enqueue(self, value):
+        # add the value to the DLL
+        self.storage.add_to_tail(value)
+        # increment size counter
+        self.size += 1
+
+    def dequeue(self):
+        # decrement the size counter
+        # check that size is greater than 0
+        if self.size > 0:
+            self.size -= 1
+            # remove head of DLL and return it
+            return self.storage.remove_from_head()
+
+    def len(self):
+        return self.size
