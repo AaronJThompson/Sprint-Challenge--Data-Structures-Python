@@ -21,3 +21,17 @@ class Trie:
         trie.word = True
       else:
         trie.insert_string(string, idx + 1)
+      
+  def __search_string__(self, string, idx):
+    if not idx < len(string):
+      return False
+    elif len(string) == idx + 1:
+      if string[idx] == self.value and self.word:
+        return True
+      else:
+        return False
+    else:
+      char = string[idx + 1]
+      if char in self.children:
+        return self.children[char].__search_string__(string, idx + 1)
+    return False
