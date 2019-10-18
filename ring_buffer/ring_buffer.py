@@ -10,4 +10,4 @@ class RingBuffer:
     self.current = self.current % len(self.storage)
 
   def get(self):
-    pass
+    return self.storage
