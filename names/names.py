@@ -15,11 +15,18 @@ duplicates = []
     for name_2 in names_2:
         if name_1 == name_2:
             duplicates.append(name_1) """
-trie = Trie()
+""" trie = Trie()
 for name_1 in names_1:
     trie.insert_string(name_1)
 for name_2 in names_2:
     if trie.check_string(name_2):
+        duplicates.append(name_2) """
+
+table = dict()
+for name_1 in names_1:
+    table[name_1] = True
+for name_2 in names_2:
+    if name_2 in table:
         duplicates.append(name_2)
 
 end_time = time.time()
