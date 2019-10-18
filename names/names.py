@@ -56,11 +56,20 @@ duplicates = []
 #         duplicates.append(name_2)
 
 # [STRETCH 2]
+
+# Average time to compute: 0.07 seconds
+# Total time complexity: O(nlog(n))
+# Total space complexity: O(n)
 store = list()
+
+# O(n)
 for name_1 in names_1:
     store.append(name_1)
+
+# O(log(n))
 store.sort()
 
+# O (log(n))
 def bin_search(arr, val):
     start = 0
     end = len(arr) - 1
