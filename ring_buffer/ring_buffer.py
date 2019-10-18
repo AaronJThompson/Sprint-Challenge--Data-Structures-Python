@@ -1,7 +1,3 @@
-import sys
-sys.path.append('../reverse')
-from reverse import LinkedList
-
 class RingBuffer:
   def __init__(self, capacity):
     self.capacity = capacity
