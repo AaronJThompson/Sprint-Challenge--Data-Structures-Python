@@ -17,3 +17,12 @@ class DoublyLinkedList:
         if self.tail is None:
             self.tail = node
         self.length += 1
+
+    def add_to_tail(self, value):
+        node = Node(value)
+        if self.tail is not None:
+            self.tail.set_next(node)
+        else:
+            self.head = node
+        self.tail = node
+        self.length += 1
