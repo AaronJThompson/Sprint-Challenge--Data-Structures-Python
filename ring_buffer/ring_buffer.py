@@ -1,9 +1,11 @@
+from dll_queue import Queue
+
 class RingBuffer:
   def __init__(self, capacity):
     self.capacity = capacity
     self.current = 0
     self.storage = [None]*capacity
-    self.list = LinkedList()
+    self.queue = Queue()
 
   def append(self, item):
     self.storage[self.current] = item
