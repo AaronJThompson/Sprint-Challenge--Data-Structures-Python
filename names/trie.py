@@ -3,3 +3,21 @@ class Trie:
     self.value = value
     self.children = {}
     self.word = word
+
+  def insert_string(self, string, idx=0):
+    if not idx < len(string):
+      return
+    char = string[idx]
+    if char in self.children:
+      child = self.children[char]
+      if len(string) == idx + 1:
+        child.word = True
+      else:
+        child.insert_string(string, idx + 1)
+    else:
+      trie = Trie(char)
+      self.children[char] = trie
+      if len(string) == idx + 1:
+        trie.word = True
+      else:
+        trie.insert_string(string, idx + 1)
