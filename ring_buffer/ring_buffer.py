@@ -1,11 +1,17 @@
+# I am using a array/list here as it makes it easier to keep order and reduces insertion complexity
 class RingBuffer:
   def __init__(self, capacity):
     self.capacity = capacity
     self.current = 0
     self.storage = [None]*capacity
+    self.length = 0
 
   def append(self, item):
-    pass
+    self.storage[self.current] = item
+    self.current += 1
+    self.current = self.current % self.capacity
+    if self.length < self.capacity:
+      self.length += 1
 
   def get(self):
-    pass
+    return self.storage[:self.length]
