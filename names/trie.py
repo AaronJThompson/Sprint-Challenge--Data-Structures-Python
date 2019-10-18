@@ -35,3 +35,12 @@ class Trie:
       if char in self.children:
         return self.children[char].__search_string__(string, idx + 1)
     return False
+
+  def check_string(self, string):
+    if self.value is not None:
+      return False
+    char = string[0]
+    if char in self.children:
+      return self.children[char].__search_string__(string, 0)
+    else:
+      return False
