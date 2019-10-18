@@ -13,7 +13,8 @@ f.close()
 duplicates = []
 
 # Average time to compute: 6.8 seconds
-# Total: O(n^2)
+# Total time complexity: O(n^2)
+# Total space complexity worst case: O(n)
 # O(n)
 # for name_1 in names_1:
     # O(n) 
@@ -22,7 +23,10 @@ duplicates = []
 #             duplicates.append(name_1)
 
 # Average time to compute: 0.21 seconds
-# Total: O(2nk) = O(nk) or O(n)
+# Total time complexity: O(2nk) = O(nk) or O(n)
+# Total space complexity worst case: O(mn) where m is longest string
+# Total space is usually less than other methods 
+# as strings that are a prefix of others do not cause additional storage
 # trie = Trie()
 # O(nk) where k is average length of string
 # for name_1 in names_1:
@@ -35,8 +39,10 @@ duplicates = []
 #     if trie.check_string(name_2):
 #         duplicates.append(name_2)
 
+# [STRECTH]
 # Average time to compute: 0.007 seconds
-# Total: O(2n) = O(n)
+# Total time complexity: O(2n) = O(n)
+# Total space complexity: O(n)
 table = dict()
 # O(n)
 for name_1 in names_1:
@@ -47,6 +53,9 @@ for name_2 in names_2:
     #O(1)
     if name_2 in table:
         duplicates.append(name_2)
+
+# Best space complexity: Solution 2
+# Best time complexity: Solution 3
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
