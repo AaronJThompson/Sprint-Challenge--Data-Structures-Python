@@ -1,5 +1,6 @@
 import time
 from trie import Trie
+import math
 start_time = time.time()
 
 f = open('names_1.txt', 'r')
@@ -43,15 +44,38 @@ duplicates = []
 # Average time to compute: 0.007 seconds
 # Total time complexity: O(2n) = O(n)
 # Total space complexity: O(n)
-table = dict()
-# O(n)
+# table = dict()
+# # O(n)
+# for name_1 in names_1:
+#     # O(1)
+#     table[name_1] = True
+# # O(n)
+# for name_2 in names_2:
+#     #O(1)
+#     if name_2 in table:
+#         duplicates.append(name_2)
+
+# [STRETCH 2]
+store = list()
 for name_1 in names_1:
-    # O(1)
-    table[name_1] = True
-# O(n)
+    store.append(name_1)
+store.sort()
+
+def bin_search(arr, val):
+    start = 0
+    end = len(arr) - 1
+    while start <= end:
+        mid = math.floor((start + end) / 2)
+        if arr[mid] > val:
+            end = mid - 1
+        elif arr[mid] < val:
+            start = mid + 1
+        else:
+            return True
+    return False
+
 for name_2 in names_2:
-    #O(1)
-    if name_2 in table:
+    if bin_search(store, name_2):
         duplicates.append(name_2)
 
 # Best space complexity: Solution 2
