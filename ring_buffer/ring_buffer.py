@@ -1,3 +1,4 @@
+# I am using a array/list here as it makes it easier to keep order and reduces insertion complexity
 class RingBuffer:
   def __init__(self, capacity):
     self.capacity = capacity
